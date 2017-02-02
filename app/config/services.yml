@@ -1,0 +1,55 @@
+services:
+    app.mongodb.connection:
+        class: 'MongoDB\Client'
+        arguments:
+            - '%mongodb.uri%'
+            - '%mongodb.uri_options%'
+            - '%mongodb.driver_options%'
+
+    app.mongodb.process.collection:
+        public: false
+        class: 'MongoDB\Collection'
+        factory: ['@app.mongodb.connection', 'selectCollection']
+        arguments: ['%mongodb.name%', 'processes']
+
+    app.mongodb.process_executions.collection:
+        public: false
+        class: 'MongoDB\Collection'
+        factory: ['@app.mongodb.connection', 'selectCollection']
+        arguments: ['%mongodb.name%', 'process_executions']
+
+    app.mongodb.process.hydrator:
+        public: false
+        class: 'Makasim\Yadm\Hydrator'
+        arguments: ['Formapro\Pvm\Process']
+
+    app.mongodb.process.storage:
+        class: 'Makasim\Yadm\MongodbStorage'
+        arguments:
+            - '@app.mongodb.process.collection'
+            - '@app.mongodb.process.hydrator'
+
+    app.mongodb.process_executions.storage:
+        class: 'Makasim\Yadm\MongodbStorage'
+        arguments:
+            - '@app.mongodb.process_executions.collection'
+            - '@app.mongodb.process.hydrator'
+
+    app.pvm.storage:
+        class: Formapro\Pvm\MongoProcessStorage
+        arguments:
+            - '@app.mongodb.process.storage'
+            - '@app.mongodb.process_executions.storage'
+
+    app.pvm.behavior_registry:
+        class: 'Formapro\Pvm\DefaultBehaviorRegistry'
+
+    app.pvm.async_transition:
+        class: 'Formapro\Pvm\SyncAsyncTransition'
+
+    app.pvm.process_engine:
+        class: Formapro\Pvm\ProcessEngine
+        arguments:
+            - '@app.pvm.behavior_registry'
+            - '@app.pvm.storage'
+            - '@app.pvm.async_transition'
