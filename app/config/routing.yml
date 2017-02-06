@@ -1,3 +1,26 @@
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /login
+
+hwi_login_facebook:
+    path: /login/check-facebook
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+fos_user_security_login:
+    path: /form-login
+    defaults:
+        _controller: FOSUserBundle:Security:login
+
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation

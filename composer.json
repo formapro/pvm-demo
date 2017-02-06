@@ -30,7 +30,9 @@
         "incenteev/composer-parameter-handler": "^2.0",
 
         "makasim/yadm": "dev-master",
-        "formapro/pvm": "dev-master"
+        "formapro/pvm": "dev-master",
+        "friendsofsymfony/user-bundle": "dev-master",
+        "hwi/oauth-bundle": "dev-master"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

@@ -53,3 +53,7 @@ services:
             - '@app.pvm.behavior_registry'
             - '@app.pvm.storage'
             - '@app.pvm.async_transition'
+
+    my.oauth_aware.user_provider.service:
+        class:        HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider
+        arguments: ['@fos_user.user_manager', { facebook: facebookId }]
