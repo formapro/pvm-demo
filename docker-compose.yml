@@ -1,0 +1,29 @@
+version: '2'
+services:
+  pvm-demo:
+    build: .
+    # image: makasim/nginx-php-fpm:latest-all-exts
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/payum_server
+      - CUSTOM_DIR=/pvm/web
+      - SYMFONY_ENV=dev
+      - SYMFONY_DEBUG=true
+      - SYMFONY_CACHE_DIR=/dev/shm/pvm/cache
+      - SYMFONY_LOGS_DIR=/dev/shm/pvm/logs
+      - SYMFONY_SESSION_SAVE_PATH=/dev/shm/pvm/sessions
+    links:
+      - mongo
+    ports:
+      - "80:80"
+    volumes:
+      - .:/pvm
+
+  mysql:
+    image: percona
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+
+  mongo:
+    image: mongo
+    ports:
+      - "27017:27017"

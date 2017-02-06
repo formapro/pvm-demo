@@ -22,3 +22,4 @@ parameters:
     mongodb.uri_options: {}
     mongodb.driver_options: {}
     mongodb.name: 'pvm-sandbox'
+    session_save_path: "%kernel.root_dir%/../var/sessions/%kernel.environment%"
