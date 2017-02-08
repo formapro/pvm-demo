@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
             new FOS\UserBundle\FOSUserBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
+            new Payum\Bundle\PayumBundle\PayumBundle(),
             new AppBundle\AppBundle(),
         ];
 
@@ -37,12 +38,12 @@ class AppKernel extends Kernel
 
     public function getCacheDir()
     {
-        return getenv('SYMFONY_CACHE_DIR') ?: dirname(__DIR__).'/var/cache/'.$this->getEnvironment();
+        return dirname(__DIR__).'/var/cache/'.$this->getEnvironment();
     }
 
     public function getLogDir()
     {
-        return getenv('SYMFONY_LOGS_DIR') ?:  dirname(__DIR__).'/var/logs';
+        return dirname(__DIR__).'/var/logs';
     }
 
     public function registerContainerConfiguration(LoaderInterface $loader)

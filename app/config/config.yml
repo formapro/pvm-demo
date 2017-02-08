@@ -27,7 +27,7 @@ framework:
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
-        save_path:   "%session_save_path%"
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
     fragments:       ~
     http_method_override: true
     assets: ~
@@ -74,6 +74,9 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: 'AppBundle\Entity\User'
+    from_email:
+        sender_name: 'foo'
+        address: 'foo@example.com'
 
 hwi_oauth:
     connect:
@@ -95,3 +98,19 @@ hwi_oauth:
             options:
                 display:         page
 
+
+payum:
+    security:
+        token_storage:
+            AppBundle\Entity\PaymentToken: { doctrine: orm }
+
+    storages:
+        AppBundle\Entity\Payment: { doctrine: orm }
+
+    gateways:
+        paypal:
+            factory: 'paypal_express_checkout'
+            username: '%paypal.express_checkout.username%'
+            password: '%paypal.express_checkout.password%'
+            signature: '%paypal.express_checkout.signature%'
+            sandbox: true

@@ -8,9 +8,11 @@ services:
       - CUSTOM_DIR=/pvm/web
       - SYMFONY_ENV=dev
       - SYMFONY_DEBUG=true
-      - SYMFONY_CACHE_DIR=/dev/shm/pvm/cache
-      - SYMFONY_LOGS_DIR=/dev/shm/pvm/logs
-      - SYMFONY_SESSION_SAVE_PATH=/dev/shm/pvm/sessions
+      - MYSQL_HOST=mysql
+      - MYSQL_PORT=3306
+      - MYSQL_DATABASE=pvm
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=rootpass
     links:
       - mongo
     ports:
@@ -22,6 +24,8 @@ services:
     image: percona
     environment:
       - MYSQL_ROOT_PASSWORD=rootpass
+    ports:
+      - "3306:3306"
 
   mongo:
     image: mongo
