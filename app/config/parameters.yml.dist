@@ -27,3 +27,12 @@ parameters:
     paypal.express_checkout.password: '%env(PAYPAL_PASSWORD)%'
     paypal.express_checkout.signature: '%env(PAYPAL_SIGNATURE)%'
 
+    env(DB_PASSWORD): ~
+    env(MYSQL_PORT): ~
+    env(MYSQL_DATABASE): ~
+    env(MYSQL_USER): ~
+    env(MYSQL_PASSWORD): ~
+    env(MONGO_URI): ~
+    env(PAYPAL_USERNAME): ~
+    env(PAYPAL_PASSWORD): ~
+    env(PAYPAL_SIGNATURE): ~
