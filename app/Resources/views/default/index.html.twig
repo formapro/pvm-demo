@@ -3,8 +3,10 @@
 {% block body %}
     <div id="wrapper">
         <div id="container">
-            <a href="{{ path('hwi_oauth_connect') }}">OAuth Login</a>
-            <a href="{{ path('fos_user_security_login') }}">Form Login</a>
+            <ul>
+                <li><a href="{{ path('calculator') }}">Calculator</a></li>
+                <li><a href="{{ path('paypal_express_checkout') }}">Paypal ExpressCheckout</a></li>
+            </ul>
         </div>
     </div>
 {% endblock %}

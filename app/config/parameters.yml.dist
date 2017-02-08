@@ -2,11 +2,11 @@
 # Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
 # http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
 parameters:
-    database_host:     127.0.0.1
-    database_port:     ~
-    database_name:     symfony
-    database_user:     root
-    database_password: ~
+    database_host: '%env(MYSQL_HOST)%'
+    database_port: '%env(MYSQL_PORT)%'
+    database_name: '%env(MYSQL_DATABASE)%'
+    database_user: '%env(MYSQL_USER)%'
+    database_password: '%env(MYSQL_PASSWORD)%'
     # You should uncomment this if you want use pdo_sqlite
     # database_path: "%kernel.root_dir%/data.db3"
 
@@ -18,11 +18,12 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
 
-    mongodb.uri: 'mongodb://127.0.0.1:27017'
+    mongodb.uri: '%env(MONGO_URI)%'
     mongodb.uri_options: {}
     mongodb.driver_options: {}
     mongodb.name: 'pvm-sandbox'
 
-    paypal.express_checkout.username: EDITME
-    paypal.express_checkout.password: EDITME
-    paypal.express_checkout.signature: EDITME
+    paypal.express_checkout.username: '%env(PAYPAL_USERNAME)%'
+    paypal.express_checkout.password: '%env(PAYPAL_PASSWORD)%'
+    paypal.express_checkout.signature: '%env(PAYPAL_SIGNATURE)%'
+

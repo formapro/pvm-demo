@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Payment;
 use Formapro\Pvm\CallbackBehavior;
 use Formapro\Pvm\Exception\WaitExecutionException;
 use Formapro\Pvm\Process;
@@ -41,19 +40,19 @@ class PaypalController extends Controller
         $this->setupBehaviors();
 
         if ($request->query->get('clear-session', false)) {
-            $request->getSession()->set('processId', null);
-            $request->getSession()->set('tokenId', null);
+            $request->getSession()->set('paypal.processId', null);
+            $request->getSession()->set('paypal.tokenId', null);
 
             return $this->redirectToRoute('paypal_express_checkout');
         }
 
-        if ($processId = $request->getSession()->get('processId')) {
+        if ($processId = $request->getSession()->get('paypal.processId')) {
             $process = $this->getProcessStorage()->findExecution($processId);
         } else {
             $process = $this->createProcess();
         }
 
-        if ($tokenId = $request->getSession()->get('tokenId')) {
+        if ($tokenId = $request->getSession()->get('paypal.tokenId')) {
             $token = $process->getToken($tokenId);
         } else {
             foreach ($process->getTransitions() as $transition) {
@@ -70,11 +69,11 @@ class PaypalController extends Controller
         $waitTokens = $this->getProcessEngine()->proceed($token, $logger = new Logger());
 
         if ($waitTokens) {
-            $request->getSession()->set('processId', $process->getId());
-            $request->getSession()->set('tokenId', $waitTokens[0]->getId());
+            $request->getSession()->set('paypal.processId', $process->getId());
+            $request->getSession()->set('paypal.tokenId', $waitTokens[0]->getId());
         } else {
-            $request->getSession()->remove('processId');
-            $request->getSession()->remove('tokenId');
+            $request->getSession()->remove('paypal.processId');
+            $request->getSession()->remove('paypal.tokenId');
         }
 
         $graph = (new GraphVizVisual())->createImageSrc($process);

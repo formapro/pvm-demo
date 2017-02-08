@@ -1,4 +1,5 @@
 version: '2'
+
 services:
   pvm-demo:
     build: .
@@ -13,8 +14,12 @@ services:
       - MYSQL_DATABASE=pvm
       - MYSQL_USER=root
       - MYSQL_PASSWORD=rootpass
+      - PAYPAL_USERNAME=EDITME
+      - PAYPAL_PASSWORD=EDITME
+      - PAYPAL_SIGNATURE=EDITME
     links:
       - mongo
+      - mysql
     ports:
       - "80:80"
     volumes:
@@ -24,10 +29,6 @@ services:
     image: percona
     environment:
       - MYSQL_ROOT_PASSWORD=rootpass
-    ports:
-      - "3306:3306"
 
   mongo:
     image: mongo
-    ports:
-      - "27017:27017"

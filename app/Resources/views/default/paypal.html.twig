@@ -8,12 +8,16 @@
             </div>
 
             {% if form %}
+                <p>Paypal user <b>eurbuy_1353505850_per@gmail.com</b> and password <b>eurbuyeurbuy</b>
+
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
                 <button type="submit">Submit</button>
                 {{ form_end(form) }}
                 </form>
             {% endif %}
+
+            <hr />
 
             {% if process.value('result') %}
                 <p>Result: {{ process.value('result') }}</p>
