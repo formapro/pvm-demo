@@ -27,6 +27,7 @@ use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Form;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Tests\Logger;
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Validator\Constraints\Range;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
@@ -126,8 +127,8 @@ class PaypalController extends Controller
                         'PAYMENTREQUEST_0_AMT' => $form->getData()['amount'],
                         'PAYMENTREQUEST_0_PAYMENTACTION' => Api::PAYMENTACTION_SALE,
                         'AUTHORIZE_TOKEN_USERACTION' => $form->getData()['order_confirmation_required'] ? null : Api::USERACTION_COMMIT,
-                        'RETURNURL' => 'http://localhost/paypal-express-checkout',
-                        'CANCELURL' => 'http://localhost/paypal-express-checkout?cancelled=1',
+                        'RETURNURL' => $this->generateUrl('paypal_express_checkout', [], UrlGeneratorInterface::ABSOLUTE_URL),
+                        'CANCELURL' => $this->generateUrl('paypal_express_checkout', ['cancelled' => 1], UrlGeneratorInterface::ABSOLUTE_URL),
                     ]);
 
                     $token->form = null;
