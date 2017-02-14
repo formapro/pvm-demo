@@ -5,10 +5,13 @@
         <div id="container">
             <div id="welcome">
                 <h1><span>Paypal ExpressCheckout</span></h1>
+                <a href="https://github.com/formapro/pvm-demo/blob/master/src/AppBundle/Controller/PaypalController.php">Source code</a>
+                <br />
+                <a href="{{ path('paypal_express_checkout', {'clear-session': 1}) }}">Reset</a>
             </div>
 
             {% if form %}
-                <p>Paypal user <b>eurbuy_1353505850_per@gmail.com</b> and password <b>eurbuyeurbuy</b>
+                <p>Paypal user <b>eurbuy_1353505850_per@gmail.com</b> and password <b>eurbuyeurbuy</b></p>
 
                 {{ form_start(form) }}
                 {{ form_widget(form) }}
