@@ -1,4 +1,10 @@
 {
+    "alom/graphviz": {
+        "version": "v1.1.0"
+    },
+    "clue/graph": {
+        "version": "v0.9.0"
+    },
     "doctrine/annotations": {
         "version": "1.0",
         "recipe": {
@@ -80,8 +86,14 @@
     "fig/link-util": {
         "version": "1.0.0"
     },
+    "formapro/pvm": {
+        "version": "0.3.x-dev"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
+    },
+    "makasim/values": {
+        "version": "0.4.0"
     },
     "monolog/monolog": {
         "version": "1.23.0"
@@ -91,6 +103,9 @@
     },
     "ocramius/proxy-manager": {
         "version": "2.1.1"
+    },
+    "paragonie/random_compat": {
+        "version": "v9.99.99"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
@@ -115,6 +130,9 @@
     },
     "psr/simple-cache": {
         "version": "1.0.1"
+    },
+    "ramsey/uuid": {
+        "version": "3.8.0"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",

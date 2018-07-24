@@ -1,3 +1,7 @@
-#index:
-#    path: /
-#    controller: App\Controller\DefaultController::index
+list:
+    path: /
+    controller: App\Controller\ListController
+
+demo:
+    path: /demo/{exampleName}
+    controller: App\Controller\DemoController
