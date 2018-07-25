@@ -83,6 +83,24 @@
     "egulias/email-validator": {
         "version": "2.1.4"
     },
+    "enqueue/enqueue": {
+        "version": "0.8.29"
+    },
+    "enqueue/fs": {
+        "version": "0.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.4",
+            "ref": "330bbc75a5bb7d25359af339dadd2467774ce79d"
+        }
+    },
+    "enqueue/null": {
+        "version": "0.8.24"
+    },
+    "enqueue/simple-client": {
+        "version": "0.8.28"
+    },
     "fig/link-util": {
         "version": "1.0.0"
     },
@@ -92,8 +110,20 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "makasim/temp-file": {
+        "version": "0.2.0"
+    },
     "makasim/values": {
         "version": "0.4.0"
+    },
+    "makasim/yadm": {
+        "version": "0.5-dev"
+    },
+    "mikemccabe/json-patch-php": {
+        "version": "dev-master"
+    },
+    "mongodb/mongodb": {
+        "version": "1.4.1"
     },
     "monolog/monolog": {
         "version": "1.23.0"
@@ -130,6 +160,9 @@
     },
     "psr/simple-cache": {
         "version": "1.0.1"
+    },
+    "queue-interop/queue-interop": {
+        "version": "0.6.1"
     },
     "ramsey/uuid": {
         "version": "3.8.0"

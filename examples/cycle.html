@@ -1,3 +1,16 @@
 The example shows how some nodes could be executed several times in a cycle.
 <br>
 For example you want to send an email but something went wrong and the server is not available and you want to retry the operation.
+
+<h4>Setup</h4>
+
+<pre><code>
+mkdir ~/pvm-cycle
+cd ~/pvm-cycle
+composer req formapro/pvm:0.4.x-dev makasim/values:0.5.x-dev
+
+# create such file with the code below
+php cycle.php
+</code></pre>
+
+<h4>Result</h4>

@@ -6,8 +6,12 @@
         "ext-iconv": "*",
         "alom/graphviz": "^1.1",
         "clue/graph": "^0.9.0",
-        "formapro/pvm": "0.4@dev",
-        "makasim/values": "0.5@dev",
+        "formapro/pvm": "0.4.x-dev",
+        "makasim/values": "0.5.x-dev",
+        "makasim/yadm": "0.5.x-dev",
+        "mikemccabe/json-patch-php": "dev-master",
+        "enqueue/simple-client": "^0.8",
+        "enqueue/fs": "^0.8",
         "sensio/framework-extra-bundle": "^5.1",
         "symfony/asset": "^4.1",
         "symfony/console": "^4.1",
@@ -40,7 +44,10 @@
         "preferred-install": {
             "*": "dist"
         },
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "ext-mongodb": "1.5"
+        }
     },
     "autoload": {
         "psr-4": {

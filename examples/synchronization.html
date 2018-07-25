@@ -1,0 +1,16 @@
+An example demonstrate how one task could be execute only when other tasks are finished.
+<br>
+For example you have to make sure all your services are updated with new data before you notify customer.
+
+<h4>Setup</h4>
+
+<pre><code>
+mkdir ~/pvm-synchronization
+cd ~/pvm-synchronization
+composer req formapro/pvm:0.4.x-dev makasim/values:0.5.x-dev
+
+# create such file with the code below
+php synchronization.php
+</code></pre>
+
+<h4>Result</h4>

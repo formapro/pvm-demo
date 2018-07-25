@@ -1,0 +1,16 @@
+To tell the engine to process in parallel you have to mark a transition async and provide an AsyncTransition implementation.
+It could be  a solution based on process forking or queue messaging.
+<br>
+PVM provides an integration with <a href="https://github.com/php-enqueue/enqueue-dev">Enqueue Messaging Library</a> to execute tasks in parallel.
+Some extra packages have to be installed.
+
+
+<pre><code>
+$ composer req enqueue/simple-client enqueue/fs
+</code></pre>
+
+In the example above the foo task is executed in same process where bar is not, instead, the message is sent to the queue.
+Then the message is picked up by a consumer and gets processed.
+<br>
+
+

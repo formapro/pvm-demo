@@ -1,0 +1,18 @@
+The process could be stopped at some point and continued later (with some additional info).
+</br>
+In the example we cannot proceed with the purchase till customer provide us with a credit card.
+So we stop the process till user fill the card. It could be a web form or other way to get the card number.
+Continue the once a user gives us the card.
+
+<h4>Setup</h4>
+
+<pre><code>
+mkdir ~/pvm-pause-and-continue
+cd ~/pvm-pause-and-continue
+composer req formapro/pvm:0.4.x-dev makasim/values:0.5.x-dev
+
+# create such file with the code below
+php pause-and-continue.php
+</code></pre>
+
+<h4>Result</h4>

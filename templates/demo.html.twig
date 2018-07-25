@@ -46,7 +46,9 @@
 
         <div class="tab-content">
             <div class="tab-pane fade show active" id="source" role="tabpanel" aria-labelledby="source-tab">
-                <pre>{{ source|raw }}</pre>
+                {% for scriptFile in currentExample.scriptFiles %}
+                    <pre>{{ scriptFile|highlight_code }}</pre>
+                {% endfor %}
             </div>
             <div class="tab-pane fade" id="output" role="tabpanel" aria-labelledby="output-tab">
                 <pre>{{ output }}</pre>
