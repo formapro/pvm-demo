@@ -1,64 +1,40 @@
-{% extends "base.html.twig" %}
+{% extends "base_example.html.twig" %}
 
-{% block stylesheets %}
-    {{ parent() }}
+{% block example %}
+<div class="d-md-fle">
+    <h2>{{ currentExample.title }}</h2>
 
-    <style>
-        /*.tab-content { padding: 20px }*/
-    </style>
-{% endblock %}
+    <p>{{ currentExample.description|raw }}</p>
 
-{% block body %}
-<div class="row">
-    <div class="col-2">
-        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            {% for example in examples %}
-                <a
-                    class="nav-link {% if example.name == currentExample.name %}active{% endif %}"
-                    id="v-pills-home-tab"
-                    href="{{ path('demo', { 'exampleName': example.name }) }}"
-                    role="tab"
-                >
-                    {{ example.title }}
-                </a>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="source-tab" data-toggle="tab" href="#source" role="tab" aria-controls="source" aria-selected="true">Source</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="output-tab" data-toggle="tab" href="#output" role="tab" aria-controls="output" aria-selected="false">Output</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Graph</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="process-tab" data-toggle="tab" href="#process" role="tab" aria-controls="process" aria-selected="false">Process</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="source" role="tabpanel" aria-labelledby="source-tab">
+            {% for scriptFile in currentExample.scriptFiles %}
+                <pre>{{ scriptFile|highlight_code }}</pre>
             {% endfor %}
         </div>
-    </div>
-    <div class="col-9">
-        <h2>{{ currentExample.title }}</h2>
-
-        <p>{{ currentExample.description|raw }}</p>
-
-        <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item">
-                <a class="nav-link active" id="source-tab" data-toggle="tab" href="#source" role="tab" aria-controls="source" aria-selected="true">Source</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="output-tab" data-toggle="tab" href="#output" role="tab" aria-controls="output" aria-selected="false">Output</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="graph-tab" data-toggle="tab" href="#graph" role="tab" aria-controls="graph" aria-selected="false">Graph</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" id="process-tab" data-toggle="tab" href="#process" role="tab" aria-controls="process" aria-selected="false">Process</a>
-            </li>
-        </ul>
-
-        <div class="tab-content">
-            <div class="tab-pane fade show active" id="source" role="tabpanel" aria-labelledby="source-tab">
-                {% for scriptFile in currentExample.scriptFiles %}
-                    <pre>{{ scriptFile|highlight_code }}</pre>
-                {% endfor %}
-            </div>
-            <div class="tab-pane fade" id="output" role="tabpanel" aria-labelledby="output-tab">
-                <pre>{{ output }}</pre>
-            </div>
-            <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
-                <div id="graph-container" class="d-flex justify-content-center"></div>
-            </div>
-            <div class="tab-pane fade" id="process" role="tabpanel" aria-labelledby="process-tab">
-                <pre>{{ pvmContext.process|json_encode(constant('JSON_PRETTY_PRINT'))|raw }}</pre>
-            </div>
+        <div class="tab-pane fade" id="output" role="tabpanel" aria-labelledby="output-tab">
+            <pre>{{ output }}</pre>
+        </div>
+        <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
+            <div id="graph-container" class="d-flex justify-content-center"></div>
+        </div>
+        <div class="tab-pane fade" id="process" role="tabpanel" aria-labelledby="process-tab">
+            <pre>{{ pvmContext.process|json_encode(constant('JSON_PRETTY_PRINT'))|raw }}</pre>
         </div>
     </div>
 </div>

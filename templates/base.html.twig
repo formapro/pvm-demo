@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}PVM Examples!{% endblock %}</title>
+        <link rel="shortcut icon" href="/pvm-32x32-32x32-32x32.png" type="image/x-icon">
         {% block stylesheets %}
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 
@@ -13,13 +14,38 @@
                     display: block;
                     padding-left: 20px;
                 }
+                .nav-pills .nav-link.active { background-color: #343a40 }
+                .nav-pills .nav-link:not(.active) {
+                    color: #343a40;
+                }
+                .navbar .nav-link:hover {
+                    font-weight: bold;
+                }
+                .nav-pills .nav-link:not(.active):hover {
+                    font-weight: bold;
+                }
+
+                .sidebar {
+                    flex: 0 0 250px;
+                }
             </style>
         {% endblock %}
     </head>
     <body>
-        <h1>
-            <a href="{{ path('list') }}">PVM Examples</a>
-        </h1>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">
+                <img width="162" height="50" src="/pvm-3-415x128.png" alt="PVM Examples">
+            </a>
+            <ul class="nav navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://pvm.forma-pro.com/">GITHUB</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="http://forma-pro.com/">BY FORMAPRO</a>
+                </li>
+            </ul>
+        </nav>
+
         {% block body %}{% endblock %}
         {% block javascripts %}
             <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

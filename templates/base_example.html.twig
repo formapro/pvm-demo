@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+        /*.tab-content { padding: 20px }*/
+        .nav-pills .nav-link.active { background-color: #343a40 }
+        .nav-pills .nav-link:not(.active) {
+            color: #343a40;
+        }
+        .navbar .nav-link:hover {
+            font-weight: bold;
+        }
+        .nav-pills .nav-link:not(.active):hover {
+            font-weight: bold;
+        }
+
+        .sidebar {
+            flex: 0 0 250px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-row">
+        <ul class="sidebar nav p-4 d-md-flex flex-column nav-pills nav-light bg-light" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            {% for example in examples %}
+                <li class="nav-item">
+                    <a
+                            class="nav-link {% if example.name == currentExample.name|default(false) %}active{% endif %}"
+                            id="v-pills-home-tab"
+                            href="{{ path('demo', { 'exampleName': example.name }) }}"
+                            role="tab"
+                    >
+                        {{ example.title }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="p-4 d-md-flex">
+            {% block example %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

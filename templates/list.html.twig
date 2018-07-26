@@ -1,20 +1,3 @@
-{% extends "base.html.twig" %}
+{% extends "base_example.html.twig" %}
 
-{% block stylesheets %}
-    {{ parent() }}
-
-    <style>
-        /*.tab-content { padding: 20px }*/
-    </style>
-{% endblock %}
-
-{% block body %}
-    <ul>
-        {% for example in examples %}
-        <li>
-            <h4><a href="{{ path('demo', {'exampleName': example.name }) }}">{{ example.title }}</a></h4>
-            <p>{{ example.description|raw }}</p>
-        </li>
-        {% endfor %}
-    </ul>
-{% endblock %}
+{% block example %}<h2>Choose an example</h2>{% endblock %}

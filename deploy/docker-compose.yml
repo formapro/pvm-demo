@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+  demo:
+    image: 'formapro/pvm-demo:latest'
+    env_file:
+      - '.env'
+    ports:
+      - '80:80'
