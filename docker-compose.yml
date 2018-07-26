@@ -6,10 +6,10 @@ services:
     depends_on:
       - mongo
     volumes:
-      - '/pvm/.env:/app/.env'
+      - './:/app'
     environment:
       - ENQUEUE_DSN=file://app/var/queue
-      - MONGO_DSN=mongodb://mongo
+      - MONGO_DSN=mongodb://mongo/pvm_demo
       - NGINX_WEB_ROOT=/app/public
     ports:
       - '80:80'

@@ -22,6 +22,25 @@ class GetExamplesService
      */
     public function getAll(): array
     {
+       $unorderedExamples = $this->getAllUnordered();
+
+       return [
+           'sequence' => $unorderedExamples['sequence'],
+           'fork' => $unorderedExamples['fork'],
+           'condition' => $unorderedExamples['condition'],
+           'cycle' => $unorderedExamples['cycle'],
+           'synchronization' => $unorderedExamples['synchronization'],
+           'pause-and-continue' => $unorderedExamples['pause-and-continue'],
+           'store-to-file' => $unorderedExamples['store-to-file'],
+           'store-to-mongodb' => $unorderedExamples['store-to-mongodb'],
+       ];
+    }
+
+    /**
+     * @return array|Example[]
+     */
+    private function getAllUnordered(): array
+    {
         $exampleFiles = (new Finder())
             ->name('*.php')
             ->depth(0)
