@@ -31,6 +31,7 @@ class GetExamplesService
            'cycle' => $unorderedExamples['cycle'],
            'synchronization' => $unorderedExamples['synchronization'],
            'pause-and-continue' => $unorderedExamples['pause-and-continue'],
+           'clone-and-modify' => $unorderedExamples['clone-and-modify'],
            'store-to-file' => $unorderedExamples['store-to-file'],
            'store-to-mongodb' => $unorderedExamples['store-to-mongodb'],
        ];
