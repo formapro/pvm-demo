@@ -7,7 +7,7 @@ class HighlightCodeExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFilter('highlight_code', function($value) {
-                return new \Twig_Markup(highlight_file($value), 'utf8');
+                return new \Twig_Markup(highlight_file($value, true), 'utf8');
             }),
         ];
     }
