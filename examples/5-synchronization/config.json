@@ -1,0 +1,7 @@
+{
+  "name": "synchronization",
+  "title": "Synchronization",
+  "order": [
+    "synchronization.php"
+  ]
+}

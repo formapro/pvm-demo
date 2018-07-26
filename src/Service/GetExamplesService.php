@@ -34,26 +34,38 @@ class GetExamplesService
 
         $examples = [];
         foreach ($exampleDirectories as $exampleDirectory) {
-            list($order, $exampleName) = explode('-', basename($exampleDirectory), 2);
-            $exampleTitle = ucwords(str_replace(['_', '-'], ' ', $exampleName));
+            list($order) = explode('-', basename($exampleDirectory), 2);
 
             $descriptionFile = $exampleDirectory.'/desc.html';
             $description = file_exists($descriptionFile) ? file_get_contents($descriptionFile) : '';
 
+            $config = json_decode(file_get_contents($exampleDirectory.'/config.json'), true);
+
             $example = new Example();
-            $example->name = $exampleName;
-            $example->title = $exampleTitle;
+            $example->name = $config['name'];
+            $example->title = $config['title'];
             $example->description = $description;
             $example->order = (int) $order;
 
             $exampleScriptFiles = (new Finder())
                 ->name('*.php')
                 ->depth(0)
-                ->files()
+                ->sort(function(\SplFileInfo $left, \SplFileInfo $right) use ($config) {
+                    $leftOrder = array_search($left->getBasename(), $config['order']);
+                    if (false === $leftOrder) {
+                        throw new \LogicException('No order for file '.$left);
+                    }
+                    $rightOrder = array_search($right->getBasename(), $config['order']);
+                    if (false === $rightOrder) {
+                        throw new \LogicException('No order for file '.$right);
+                    }
+
+                    return $leftOrder <=> $rightOrder;
+                })
                 ->in((string) $exampleDirectory)
             ;
 
-            foreach (array_reverse(iterator_to_array($exampleScriptFiles)) as $exampleFile) {
+            foreach ($exampleScriptFiles as $exampleFile) {
                 $example->scriptFiles[substr(basename($exampleFile), 2)] = $exampleFile;
             }
 

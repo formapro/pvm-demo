@@ -1,5 +1,5 @@
 <?php
-// parallel-executionz.php
+// parallel-execution.php
 
 use Enqueue\Client\Config;
 use Enqueue\SimpleClient\SimpleClient;

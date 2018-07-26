@@ -1,0 +1,7 @@
+{
+  "name": "pause-and-continue",
+  "title": "Pause and Continue",
+  "order": [
+    "pause-and-continue.php"
+  ]
+}

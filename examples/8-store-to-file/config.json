@@ -1,0 +1,7 @@
+{
+  "name": "store-to-file",
+  "title": "Store to File",
+  "order": [
+    "store-to-file.php"
+  ]
+}

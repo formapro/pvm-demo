@@ -1,0 +1,8 @@
+{
+  "name": "parallel-execution",
+  "title": "Parallel execution",
+  "order": [
+    "parallel-execution.php",
+    "handle-async-transition.php"
+  ]
+}
