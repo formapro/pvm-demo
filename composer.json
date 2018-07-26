@@ -11,7 +11,7 @@
         "makasim/yadm": "0.5.x-dev",
         "mikemccabe/json-patch-php": "dev-master",
         "enqueue/simple-client": "^0.8",
-        "enqueue/fs": "^0.8",
+        "enqueue/amqp-bunny": "^0.8",
         "symfony/console": "^4.1",
         "symfony/flex": "^1.0",
         "symfony/framework-bundle": "^4.1",
@@ -20,7 +20,8 @@
         "symfony/twig-bundle": "^4.1",
         "symfony/validator": "^4.1",
         "symfony/web-link": "^4.1",
-        "symfony/yaml": "^4.1"
+        "symfony/yaml": "^4.1",
+        "psr/log": "^1"
     },
     "require-dev": {
         "symfony/debug-pack": "*",

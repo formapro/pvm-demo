@@ -17,15 +17,6 @@
     "enqueue/enqueue": {
         "version": "0.8.29"
     },
-    "enqueue/fs": {
-        "version": "0.4",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "0.4",
-            "ref": "330bbc75a5bb7d25359af339dadd2467774ce79d"
-        }
-    },
     "enqueue/null": {
         "version": "0.8.24"
     },
@@ -37,9 +28,6 @@
     },
     "formapro/pvm": {
         "version": "0.3.x-dev"
-    },
-    "makasim/temp-file": {
-        "version": "0.2.0"
     },
     "makasim/values": {
         "version": "0.4.0"

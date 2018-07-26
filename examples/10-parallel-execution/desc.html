@@ -3,14 +3,23 @@ It could be  a solution based on process forking or queue messaging.
 <br>
 PVM provides an integration with <a href="https://github.com/php-enqueue/enqueue-dev">Enqueue Messaging Library</a> to execute tasks in parallel.
 Some extra packages have to be installed.
-
-
-<pre><code>
-$ composer req enqueue/simple-client enqueue/fs
-</code></pre>
-
+<br>
 In the example above the foo task is executed in same process where bar is not, instead, the message is sent to the queue.
 Then the message is picked up by a consumer and gets processed.
 <br>
 
+<h4>Setup</h4>
 
+<pre><code>
+mkdir ~/pvm-parallel-execution
+cd ~/pvm-parallel-execution
+
+composer req formapro/pvm:0.4.x-dev makasim/values:0.5.x-dev makasim/yadm:0.5.x-dev
+composer req enqueue/simple-client:^0.8 enqueue/fs:^0.8
+
+# create such files with the code below
+php parallel-execution.php
+php handle-async-transition.php
+</code></pre>
+
+<h4>Result</h4>

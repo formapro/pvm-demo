@@ -10,11 +10,14 @@ class GetExamplesService
     public function getOne(string $name): Example
     {
         $examples = $this->getAll();
-        if (false == array_key_exists($name, $examples)) {
-            throw new \LogicException('The example with such name does not exists');
+
+        foreach ($examples as $example) {
+            if ($example->name === $name) {
+                return $example;
+            }
         }
 
-        return $examples[$name];
+        throw new \LogicException('The example with such name does not exists');
     }
 
     /**
@@ -22,51 +25,44 @@ class GetExamplesService
      */
     public function getAll(): array
     {
-       $unorderedExamples = $this->getAllUnordered();
-
-       return [
-           'sequence' => $unorderedExamples['sequence'],
-           'fork' => $unorderedExamples['fork'],
-           'condition' => $unorderedExamples['condition'],
-           'cycle' => $unorderedExamples['cycle'],
-           'synchronization' => $unorderedExamples['synchronization'],
-           'pause-and-continue' => $unorderedExamples['pause-and-continue'],
-           'clone-and-modify' => $unorderedExamples['clone-and-modify'],
-           'store-to-file' => $unorderedExamples['store-to-file'],
-           'store-to-mongodb' => $unorderedExamples['store-to-mongodb'],
-       ];
-    }
-
-    /**
-     * @return array|Example[]
-     */
-    private function getAllUnordered(): array
-    {
-        $exampleFiles = (new Finder())
-            ->name('*.php')
+        $exampleDirectories = (new Finder())
             ->depth(0)
-            ->files()
-            ->in(__DIR__.'/../../examples')
+            ->directories()
+            ->exclude('vendor')
+            ->in(realpath(__DIR__.'/../../examples'))
         ;
 
         $examples = [];
-        foreach ($exampleFiles as $exampleFile) {
-            /** @var SplFileInfo $exampleFile */
-
-            $exampleName = str_replace('.php', '', $exampleFile->getFilename());
+        foreach ($exampleDirectories as $exampleDirectory) {
+            list($order, $exampleName) = explode('-', basename($exampleDirectory), 2);
             $exampleTitle = ucwords(str_replace(['_', '-'], ' ', $exampleName));
 
-            $descriptionFile = __DIR__.'/../../examples/'.$exampleName.'.html';
+            $descriptionFile = $exampleDirectory.'/desc.html';
             $description = file_exists($descriptionFile) ? file_get_contents($descriptionFile) : '';
 
             $example = new Example();
             $example->name = $exampleName;
             $example->title = $exampleTitle;
             $example->description = $description;
-            $example->scriptFiles[] = $exampleFile;
+            $example->order = (int) $order;
 
-            $examples[$exampleName] = $example;
+            $exampleScriptFiles = (new Finder())
+                ->name('*.php')
+                ->depth(0)
+                ->files()
+                ->in((string) $exampleDirectory)
+            ;
+
+            foreach (array_reverse(iterator_to_array($exampleScriptFiles)) as $exampleFile) {
+                $example->scriptFiles[substr(basename($exampleFile), 2)] = $exampleFile;
+            }
+
+            $examples[] = $example;
         }
+
+        usort($examples, function ($left, $right) {
+            return $left->order <=> $right->order;
+        });
 
         return $examples;
     }

@@ -23,12 +23,16 @@
 
     <div class="tab-content">
         <div class="tab-pane fade show active" id="source" role="tabpanel" aria-labelledby="source-tab">
-            {% for scriptFile in currentExample.scriptFiles %}
+            {% for name, scriptFile in currentExample.scriptFiles %}
+                <p>{{ name }}</p>
                 <pre>{{ scriptFile|highlight_code }}</pre>
             {% endfor %}
         </div>
         <div class="tab-pane fade" id="output" role="tabpanel" aria-labelledby="output-tab">
-            <pre>{{ output }}</pre>
+            {% for name, output in outputs %}
+                <p>{{ name }}</p>
+                <pre><code>{{ output }}</code></pre>
+            {% endfor %}
         </div>
         <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">
             <div id="graph-container" class="d-flex justify-content-center"></div>

@@ -22,12 +22,18 @@ class DemoController
         $process = null;
         $engine = null;
 
-        $exampleFile = $example->scriptFiles[0];
+
+        $scriptFiles = $example->scriptFiles;
+        $firstScriptFile = array_shift($scriptFiles);
 
         ob_start();
-        require_once $exampleFile;
-        $output = ob_get_contents();
+        require_once $firstScriptFile;
+        $outputs[substr(basename($firstScriptFile), 2)] = ob_get_contents();
         ob_end_clean();
+
+        foreach ($scriptFiles as $name => $scriptFile) {
+            $outputs[$name] = $this->executeScript($scriptFile);
+        }
 
         if (false == $process instanceof Process) {
             throw new \LogicException('Process var is not defined');
@@ -45,16 +51,24 @@ class DemoController
         }
 
         return new Response($twig->render('demo.html.twig', [
-            'source' => highlight_file($exampleFile, true),
-            'title' => ucwords(str_replace(['-', '_'], ' ', $exampleName)).' Example',
             'currentExample' => $example,
             'examples' => $examples,
-            'output' => $output,
+            'outputs' => $outputs,
             'pvmContext' => [
                 'process' => get_values($process),
                 'tokens' => $rawTokens,
                 'dot' => (new BuildDigraphScript())->build($graph)
             ]
         ]));
+    }
+
+    protected function executeScript(string $file): string
+    {
+        ob_start();
+        require_once $file;
+        $output = ob_get_contents();
+        ob_end_clean();
+
+        return $output;
     }
 }

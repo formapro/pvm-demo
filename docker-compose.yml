@@ -5,10 +5,11 @@ services:
     image: formapro/nginx-php-fpm:latest-all-exts
     depends_on:
       - mongo
+      - rabbitmq
     volumes:
       - './:/app'
     environment:
-      - ENQUEUE_DSN=file://app/var/queue
+      - ENQUEUE_DSN=amqp://guest:guest@rabbitmq:5672/pvm_demo
       - MONGO_DSN=mongodb://mongo/pvm_demo
       - NGINX_WEB_ROOT=/app/public
     ports:
@@ -18,3 +19,14 @@ services:
       image: 'mongo:3.7'
       ports:
         - '27017:27017'
+
+  rabbitmq:
+    image: 'rabbitmq:management'
+    restart: 'always'
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+      - RABBITMQ_DEFAULT_VHOST=pvm_demo
+    ports:
+      - '15672:15672'
+

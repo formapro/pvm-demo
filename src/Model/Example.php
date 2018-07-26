@@ -5,6 +5,8 @@ class Example
 {
     public $name;
 
+    public $order;
+
     public $title;
 
     public $description;
