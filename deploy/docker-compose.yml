@@ -3,7 +3,14 @@ version: '3.1'
 services:
   demo:
     image: 'formapro/pvm-demo:latest'
+    depends_on:
+      - mongo
     env_file:
       - '.env'
     ports:
       - '80:80'
+
+  mongo:
+      image: 'mongo:3.7'
+      ports:
+        - '27017:27017'
