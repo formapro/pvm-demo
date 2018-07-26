@@ -29,4 +29,3 @@ services:
       - RABBITMQ_DEFAULT_VHOST=pvm_demo
     ports:
       - '15672:15672'
-
