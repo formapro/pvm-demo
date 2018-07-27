@@ -24,7 +24,7 @@ $mongoDsn = getenv('MONGO_DSN');
 $mongoClient = new \MongoDB\Client($mongoDsn);
 $processCollection = (new CollectionFactory($mongoClient, $mongoDsn))->create('pvm_process');
 $processStorage = new Storage($processCollection, new Hydrator(Process::class));
-$processLockCollection = (new CollectionFactory($mongoClient, $mongoDsn))->create('pvm_process_lock');
+$processLockCollection = (new CollectionFactory($mongoClient, $mongoDsn))->create('pvm_token_lock');
 echo 'Connected to '.$mongoDsn.PHP_EOL;
 
 $enqueueDsn = getenv('ENQUEUE_DSN');

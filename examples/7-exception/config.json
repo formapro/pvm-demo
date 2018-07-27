@@ -1,0 +1,7 @@
+{
+  "name": "exception",
+  "title": "Exception",
+  "order": [
+    "exception.php"
+  ]
+}
