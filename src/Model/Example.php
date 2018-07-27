@@ -12,4 +12,8 @@ class Example
     public $description;
 
     public $scriptFiles = [];
+
+    public $exampleDirectory;
+
+    public $htmlOutput;
 }

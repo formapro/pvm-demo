@@ -30,8 +30,12 @@
         </div>
         <div class="tab-pane fade" id="output" role="tabpanel" aria-labelledby="output-tab">
             {% for name, output in outputs %}
-                <p>{{ name }}</p>
-                <pre><code>{{ output }}</code></pre>
+                {% if currentExample.htmlOutput %}
+                    <div class="p-4">{{ output|raw }}</div>
+                {% else %}
+                    <p>{{ name }}</p>
+                    <pre><code>{{ output }}</code></pre>
+                {% endif %}
             {% endfor %}
         </div>
         <div class="tab-pane fade" id="graph" role="tabpanel" aria-labelledby="graph-tab">

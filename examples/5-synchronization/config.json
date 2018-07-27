@@ -3,5 +3,6 @@
   "title": "Synchronization",
   "order": [
     "synchronization.php"
-  ]
+  ],
+  "htmlOutput": false
 }

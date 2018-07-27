@@ -1,10 +1,10 @@
 <?php
 namespace App\Controller;
 
+use App\Service\CleanOldFileProcessesService;
 use App\Service\GetExamplesService;
 use Formapro\Pvm\Process;
 use Formapro\Pvm\ProcessEngine;
-use Formapro\Pvm\Token;
 use Formapro\Pvm\Visual\BuildDigraphScript;
 use Formapro\Pvm\Visual\VisualizeFlow;
 use function Makasim\Values\get_values;
@@ -12,12 +12,18 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DemoController
 {
-    public function __invoke(string $exampleName, \Twig_Environment $twig, GetExamplesService $getExamplesService): Response
-    {
+    public function __invoke(
+        string $exampleName,
+        \Twig_Environment $twig,
+        GetExamplesService $getExamplesService,
+        CleanOldFileProcessesService $cleanOldFileProcessesService
+    ): Response {
         $exampleName = str_replace(['.', '/'], '', $exampleName);
 
         $example = $getExamplesService->getOne($exampleName);
         $examples = $getExamplesService->getAll();
+
+        $cleanOldFileProcessesService->clean($example);
 
         $process = null;
         $engine = null;

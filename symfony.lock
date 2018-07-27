@@ -23,9 +23,6 @@
     "enqueue/simple-client": {
         "version": "0.8.28"
     },
-    "fig/link-util": {
-        "version": "1.0.0"
-    },
     "formapro/pvm": {
         "version": "0.3.x-dev"
     },
@@ -51,9 +48,6 @@
         "version": "1.0.1"
     },
     "psr/container": {
-        "version": "1.0.0"
-    },
-    "psr/link": {
         "version": "1.0.0"
     },
     "psr/log": {
@@ -200,15 +194,6 @@
     "symfony/test-pack": {
         "version": "v1.0.2"
     },
-    "symfony/translation": {
-        "version": "3.3",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "3.3",
-            "ref": "6bcd6c570c017ea6ae5a7a6a027c929fd3542cd8"
-        }
-    },
     "symfony/twig-bridge": {
         "version": "v4.1.1"
     },
@@ -221,13 +206,7 @@
             "ref": "f75ac166398e107796ca94cc57fa1edaa06ec47f"
         }
     },
-    "symfony/validator": {
-        "version": "v4.1.1"
-    },
     "symfony/var-dumper": {
-        "version": "v4.1.1"
-    },
-    "symfony/web-link": {
         "version": "v4.1.1"
     },
     "symfony/web-profiler-bundle": {

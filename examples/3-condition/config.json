@@ -3,5 +3,6 @@
   "title": "Condition",
   "order": [
     "condition.php"
-  ]
+  ],
+  "htmlOutput": false
 }

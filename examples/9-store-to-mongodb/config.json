@@ -3,5 +3,6 @@
   "title": "Store to MongoDB",
   "order": [
     "store-to-mongodb.php"
-  ]
+  ],
+  "htmlOutput": false
 }

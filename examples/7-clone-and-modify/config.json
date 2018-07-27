@@ -3,5 +3,6 @@
   "title": "Clone and Modify",
   "order": [
     "clone-and-modify.php"
-  ]
+  ],
+  "htmlOutput": false
 }

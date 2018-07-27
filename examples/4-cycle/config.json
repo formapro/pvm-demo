@@ -3,5 +3,6 @@
   "title": "Cycle",
   "order": [
     "cycle.php"
-  ]
+  ],
+  "htmlOutput": false
 }

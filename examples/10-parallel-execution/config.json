@@ -4,5 +4,6 @@
   "order": [
     "parallel-execution.php",
     "handle-async-transition.php"
-  ]
+  ],
+  "htmlOutput": false
 }

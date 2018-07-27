@@ -3,5 +3,6 @@
   "title": "Exception",
   "order": [
     "exception.php"
-  ]
+  ],
+  "htmlOutput": false
 }

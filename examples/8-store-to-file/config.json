@@ -3,5 +3,6 @@
   "title": "Store to File",
   "order": [
     "store-to-file.php"
-  ]
+  ],
+  "htmlOutput": false
 }

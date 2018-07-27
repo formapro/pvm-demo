@@ -1,0 +1,8 @@
+{
+  "name": "calculator",
+  "title": "Calculator",
+  "order": [
+    "calculator.php"
+  ],
+  "htmlOutput": true
+}

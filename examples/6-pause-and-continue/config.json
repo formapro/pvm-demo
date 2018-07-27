@@ -3,5 +3,6 @@
   "title": "Pause and Continue",
   "order": [
     "pause-and-continue.php"
-  ]
+  ],
+  "htmlOutput": false
 }

@@ -3,5 +3,6 @@
   "title": "Sequence",
   "order": [
     "sequence.php"
-  ]
+  ],
+  "htmlOutput": false
 }

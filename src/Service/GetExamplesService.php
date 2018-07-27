@@ -46,6 +46,8 @@ class GetExamplesService
             $example->title = $config['title'];
             $example->description = $description;
             $example->order = (int) $order;
+            $example->exampleDirectory = $exampleDirectory;
+            $example->htmlOutput = (bool) $config['htmlOutput'];
 
             $exampleScriptFiles = (new Finder())
                 ->name('*.php')
@@ -66,7 +68,7 @@ class GetExamplesService
             ;
 
             foreach ($exampleScriptFiles as $exampleFile) {
-                $example->scriptFiles[substr(basename($exampleFile), 2)] = $exampleFile;
+                $example->scriptFiles[basename($exampleFile)] = $exampleFile;
             }
 
             $examples[] = $example;
