@@ -465,12 +465,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/formapro/pvm.git",
-                "reference": "0778893a639ccb3c64fe19f5751071a32eec1ed7"
+                "reference": "6b828b5dc14126c5e82b10711353c446b2028065"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/formapro/pvm/zipball/0778893a639ccb3c64fe19f5751071a32eec1ed7",
-                "reference": "0778893a639ccb3c64fe19f5751071a32eec1ed7",
+                "url": "https://api.github.com/repos/formapro/pvm/zipball/6b828b5dc14126c5e82b10711353c446b2028065",
+                "reference": "6b828b5dc14126c5e82b10711353c446b2028065",
                 "shasum": ""
             },
             "require": {
@@ -511,7 +511,7 @@
                 "process",
                 "workflow"
             ],
-            "time": "2018-07-27T08:17:18+00:00"
+            "time": "2018-07-27T12:34:09+00:00"
         },
         {
             "name": "makasim/values",

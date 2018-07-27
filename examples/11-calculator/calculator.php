@@ -125,11 +125,11 @@ $registry = new DefaultBehaviorRegistry([
     },
     'result' => function(Token $token) {
         $result = $token->getValue('result');
-        if (false == $result) {
-            $operator = $token->getValue('operator');
-            $a = $token->getValue('a');
-            $b = $token->getValue('b');
+        $operator = $token->getValue('operator');
+        $a = $token->getValue('a');
+        $b = $token->getValue('b');
 
+        if (false == $result) {
             switch ($operator) {
                 case '+':
                     $result = $a + $b;
