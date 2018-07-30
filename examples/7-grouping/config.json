@@ -1,0 +1,8 @@
+{
+  "name": "grouping",
+  "title": "Grouping",
+  "order": [
+    "grouping.php"
+  ],
+  "htmlOutput": false
+}
