@@ -1,4 +1,4 @@
-version: '3.1'
+version: '3.4'
 
 services:
   demo:
@@ -6,15 +6,44 @@ services:
     depends_on:
       - mongo
       - rabbitmq
+    networks:
+      - traefik_net
+      - default
     env_file:
       - '.env'
+    deploy:
+      labels:
+        - "traefik.port=80"
+        - "traefik.docker.network=pvm_demo_traefik_net"
+        - "traefik.frontend.entryPoints=http,https"
+        - "traefik.frontend.redirect.entryPoint=https"
+        - "traefik.frontend.rule=Host:pvm-demo.forma-pro.com"
+
+  traefik:
+    image: traefik
     ports:
-      - '80:80'
+      - 80:80
+      - 443:443
+      - 8080:8080
+    command: traefik --docker --docker.swarmMode --docker.domain=traefik --docker.watch --api --logLevel="DEBUG" --debug --acme.acmelogging
+    networks:
+      - traefik_net
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /pvm/traefik.toml:/etc/traefik/traefik.toml
+    deploy:
+      mode: 'global'
+      placement:
+        constraints:
+          - node.role == manager
 
   mongo:
-      image: 'mongo:3.7'
-      ports:
-        - '27017:27017'
+    image: 'mongo:3.7'
+    ports:
+      - '27017:27017'
+    deploy:
+      labels:
+        - traefik.enable=false
 
   rabbitmq:
     image: 'rabbitmq:management'
@@ -25,3 +54,10 @@ services:
       - RABBITMQ_DEFAULT_VHOST=pvm_demo
     ports:
       - '15672:15672'
+    deploy:
+      labels:
+        - traefik.enable=false
+
+networks:
+  traefik_net:
+    driver: overlay

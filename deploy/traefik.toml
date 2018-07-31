@@ -1,0 +1,18 @@
+[entryPoints]
+  [entryPoints.http]
+  address = ":80"
+  [entryPoints.https]
+  address = ":443"
+    [entryPoints.https.tls]
+
+[acme]
+email = "kotlyar.maksim@gmail.com"
+onHostRule = true
+storage = "acme.json"
+entryPoint = "https"
+[acme.httpChallenge]
+entryPoint = "http"
+
+[[acme.domains]]
+main = "pvm-demo.forma-pro.com"
+sans = ["pvm-demo.forma-pro.com"]
