@@ -34,7 +34,7 @@ class DemoController
 
         ob_start();
         require_once $firstScriptFile;
-        $outputs[substr(basename($firstScriptFile), 2)] = ob_get_contents();
+        $outputs[basename($firstScriptFile)] = ob_get_contents();
         ob_end_clean();
 
         foreach ($scriptFiles as $name => $scriptFile) {

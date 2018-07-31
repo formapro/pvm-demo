@@ -1,6 +1,4 @@
 <?php
-// condition.php
-
 use Formapro\Pvm\DefaultBehaviorRegistry;
 use Formapro\Pvm\ProcessBuilder;
 use Formapro\Pvm\ProcessEngine;

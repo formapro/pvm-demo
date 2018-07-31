@@ -1,7 +1,6 @@
 <?php
-// store-to-file.php
-
 use Formapro\Pvm\DefaultBehaviorRegistry;
+use Formapro\Pvm\FileDAL;
 use Formapro\Pvm\Process;
 use Formapro\Pvm\ProcessEngine;
 use Formapro\Pvm\Token;
@@ -17,6 +16,7 @@ $process = (new ProcessBuilder())
     ->getProcess()
 ;
 
+// store to file manually
 $tmpFile = tempnam(sys_get_temp_dir(), 'pvm-demo-');
 try {
     file_put_contents($tmpFile, json_encode(get_values($process)));
@@ -31,11 +31,22 @@ try {
     unlink($tmpFile);
 }
 
-$engine = new ProcessEngine(new DefaultBehaviorRegistry([
+// use fileDal to store process state within the engine.
+$registry = new DefaultBehaviorRegistry([
     'print_label' => function(Token $token) {
         echo $token->getTo()->getId().PHP_EOL;
     },
-]));
+]);
+
+$fileDal = new FileDAL(__DIR__.'/store');
+
+$engine = new ProcessEngine($registry, $fileDal);
 
 $token = $engine->createTokenFor($process->getStartTransition());
 $engine->proceed($token);
+
+if (file_exists(__DIR__.'/store/'.$process->getId().'.json')) {
+    echo 'Found the process on the filesystem'.PHP_EOL;
+} else {
+    echo 'the process was not found on the filesystem'.PHP_EOL;
+}

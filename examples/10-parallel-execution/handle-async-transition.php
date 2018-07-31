@@ -1,6 +1,4 @@
 <?php
-// handle-async-transition.php
-
 use Enqueue\Client\Config;
 use Enqueue\Consumption\ChainExtension;
 use Enqueue\Consumption\Extension\LimitConsumptionTimeExtension;

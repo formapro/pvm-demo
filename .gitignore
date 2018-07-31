@@ -10,3 +10,4 @@
 ###< symfony/phpunit-bridge ###
 
 /examples/11-calculator/store
+/examples/8-store-to-file/store

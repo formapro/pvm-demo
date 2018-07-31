@@ -26,7 +26,7 @@
             {% for name, output in outputs %}
                 {% if currentExample.htmlOutput %}
                     <div class="p-4">{{ output|raw }}</div>
-                {% else %}
+                {% elseif output %}
                     <p>{{ name }}</p>
                     <pre><code>{{ output }}</code></pre>
                 {% endif %}

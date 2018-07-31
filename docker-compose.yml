@@ -6,11 +6,13 @@ services:
     depends_on:
       - mongo
       - rabbitmq
+      - mysql
     volumes:
       - './:/app'
     environment:
       - ENQUEUE_DSN=amqp://guest:guest@rabbitmq:5672/pvm_demo
       - MONGO_DSN=mongodb://mongo/pvm_demo
+      - MYSQL_DSN=mysql://root:rootpass@mysql/pvm_demo
       - NGINX_WEB_ROOT=/app/public
     ports:
       - '80:80'
@@ -19,6 +21,14 @@ services:
       image: 'mongo:3.7'
       ports:
         - '27017:27017'
+
+  mysql:
+      image: 'mysql:5.7'
+      ports:
+        - '3306:3306'
+      environment:
+        - MYSQL_ROOT_PASSWORD=rootpass
+        - MYSQL_DATABASE=pvm_demo
 
   rabbitmq:
     image: 'rabbitmq:management'

@@ -1,0 +1,18 @@
+In the <a href="/demo/store-to-file">previous example</a> we showed how to store a process to file.
+</br>
+In this example we show how to store it to MySQL using <a href="https://www.doctrine-project.org/">Doctrine ORM</a> library.
+Whenever the engine changes the state of a process or token it is persisted using DoctrineDAL (Data access layer).
+
+<h4>Setup</h4>
+
+<pre><code>
+mkdir ~/pvm-store-to-mysql
+cd ~/pvm-store-to-mysql
+composer req formapro/pvm:0.4.x-dev makasim/values:0.5.x-dev makasim/yadm:0.5.x-dev
+composer req doctrine/orm:^2.6
+
+# create such file with the code below
+php store-to-mysql.php
+</code></pre>
+
+<h4>Result</h4>

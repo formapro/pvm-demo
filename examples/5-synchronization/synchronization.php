@@ -1,6 +1,4 @@
 <?php
-// synchronization.php
-
 use Formapro\Pvm\DefaultBehaviorRegistry;
 use Formapro\Pvm\Exception\InterruptExecutionException;
 use Formapro\Pvm\ProcessEngine;

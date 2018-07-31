@@ -1,6 +1,4 @@
 <?php
-// grouping.php
-
 use Formapro\Pvm\ProcessBuilder;
 
 require_once __DIR__.'/vendor/autoload.php';

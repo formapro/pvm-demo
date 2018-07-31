@@ -1,6 +1,4 @@
 <?php
-// fork.php
-
 use Formapro\Pvm\DefaultBehaviorRegistry;
 use Formapro\Pvm\ProcessEngine;
 use Formapro\Pvm\Token;

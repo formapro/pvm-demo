@@ -1,6 +1,4 @@
 <?php
-// calculator.php
-
 use Formapro\Pvm\DefaultBehaviorRegistry;
 use Formapro\Pvm\Exception\WaitExecutionException;
 use Formapro\Pvm\ProcessBuilder;

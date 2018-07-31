@@ -1,6 +1,4 @@
 <?php
-// pause-and-continue.php
-
 use Formapro\Pvm\DefaultBehaviorRegistry;
 use Formapro\Pvm\Exception\WaitExecutionException;
 use Formapro\Pvm\ProcessEngine;

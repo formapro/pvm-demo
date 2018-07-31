@@ -1,6 +1,4 @@
 <?php
-// parallel-execution.php
-
 use Enqueue\Client\Config;
 use Enqueue\SimpleClient\SimpleClient;
 use Formapro\Pvm\DefaultBehaviorRegistry;
