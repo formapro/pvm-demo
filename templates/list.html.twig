@@ -2,4 +2,15 @@
 
 {% block example %}
     <h2>Build workflows, activities, BPMN like processes, or state machines with PVM</h2>
+    <div id="graph-container" class="p-4 d-flex justify-content-center"></div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script src="https://formapro.github.io/pvm-ui/dist/main.js"></script>
+    <script>
+      var pvmContext = {{ pvmContext|json_encode(constant('JSON_PRETTY_PRINT'))|raw }};
+      pvm.renderGraph(pvmContext, 'graph-container');
+    </script>
 {% endblock %}

@@ -6,6 +6,7 @@ services:
     depends_on:
       - mongo
       - rabbitmq
+      - mysql
     networks:
       - traefik_net
       - default
@@ -41,6 +42,17 @@ services:
     image: 'mongo:3.7'
     ports:
       - '27017:27017'
+    deploy:
+      labels:
+        - traefik.enable=false
+
+  mysql:
+    image: 'mysql:5.7'
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpass
+      - MYSQL_DATABASE=pvm_demo
     deploy:
       labels:
         - traefik.enable=false
